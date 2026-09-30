@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Rudy Morello – e-Portfolio</title>
+<link rel="stylesheet" href="style-images.css">
+<style>
+:root{--bg:#fff;--fg:#111;--card:#f4f8fc;--shadow:#000;--g1:#c9fbdc;--g2:#96b9fd;--muted:#555;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:light){:root:not([data-theme="light"]){--bg:#14161a;--fg:#f2f2f2;--card:#1e2229;--shadow:#000;--muted:#aaa;--g1:#2f6b4c;--g2:#3d5fa8}}
+:root[data-theme="light"]{--bg:#14161a;--fg:#f2f2f2;--card:#1e2229;--shadow:#000;--muted:#aaa;--g1:#2f6b4c;--g2:#3d5fa8}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%}
+body{background:var(--bg);color:var(--fg);font-family:"Century Gothic","Avenir Next",Avenir,Helvetica,Arial,sans-serif;line-height:1.6}
+nav{position:fixed;top:0;left:0;height:100%;width:260px;z-index:10;padding:calc(28px + env(safe-area-inset-top,0px)) 16px 28px;display:flex;flex-direction:column;gap:10px;background:var(--bg);border-right:3px solid var(--shadow);transform:translateX(-102%);transition:transform .25s ease}
+nav.open{transform:none;box-shadow:8px 0 24px rgba(0,0,0,.25)}
+.handle{position:fixed;top:50%;left:0;z-index:11;transform:translateY(-50%);width:30px;height:150px;border:2px solid var(--fg);border-left:0;border-radius:0 16px 16px 0;background:linear-gradient(180deg,var(--g1),var(--g2));color:#000;font:inherit;font-weight:800;font-size:.7rem;letter-spacing:.15em;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:0;transition:left .25s ease}
+.handle span{writing-mode:vertical-rl}
+.handle i{font-style:normal;font-size:1.3rem;animation:nudge 1.4s ease-in-out infinite}
+@keyframes nudge{50%{transform:translateX(4px)}}
+body{transition:padding-left .25s ease}
+body.open{padding-left:263px}
+body.open .handle{left:263px}
+body.open .handle i{animation:none}
+nav .brand{font-weight:800;font-size:1.15rem;margin-bottom:12px}
+nav button{font:inherit;text-align:left;color:var(--fg);background:transparent;border:2px solid transparent;border-radius:14px;padding:10px 14px;cursor:pointer}
+nav button:hover{border-color:var(--fg)}
+nav button.active{background:linear-gradient(90deg,var(--g1),var(--g2));color:#000;font-weight:700;box-shadow:0 4px 0 var(--shadow)}
+main{margin:0;padding:0 0 64px}
+.wrap{margin:0 auto;padding:32px clamp(16px,4vw,56px) 0;max-width:960px}
+.banner{background:linear-gradient(135deg,var(--g1),var(--g2));color:#000;border-bottom:5px solid #000;padding:36px clamp(16px,4vw,56px);text-align:center}
+.banner h1.title{display:block;width:auto;max-width:960px;margin:0 auto;padding:0;background:none;box-shadow:none;border-radius:0}
+.banner p{max-width:720px;margin:14px auto 0;font-size:1.3rem}
+section{display:none}
+section.active{display:block}
+h1.title{display:block;width:fit-content;max-width:100%;margin:0 auto 32px;padding:12px 44px;text-align:center;font-size:clamp(1.5rem,4vw,2.3rem);color:#000;background:linear-gradient(90deg,var(--g1),var(--g2));border-radius:28px;box-shadow:0 6px 0 var(--shadow)}
+h2{margin:32px 0 10px;text-align:center}
+.card{background:linear-gradient(135deg,var(--g1),var(--g2));color:#000;border-radius:22px;padding:18px 22px;box-shadow:0 6px 0 var(--shadow);text-align:center}
+.card ul{text-align:left}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:26px;margin-top:20px}
+.card h3{margin:0 0 6px}
+.hero{display:flex;flex-direction:column;gap:28px;align-items:center;text-align:center;background:linear-gradient(135deg,var(--g1),var(--g2));color:#000;border-radius:28px;padding:36px 22px;box-shadow:0 10px 0 var(--shadow)}
+.hero .txt{max-width:620px;font-size:1.2rem}
+.hero .list{font-size: 1.2rem;text-align: left;}
+.hero h1{font-size:6.4rem;margin:0;width:100;text-align:center}
+.wrap>p{max-width:720px;margin-left:auto;margin-right:auto;text-align:center}
+.wrap>ul,.timeline,.wrap>.card{max-width:680px;margin-left:auto;margin-right:auto}
+.grid{justify-items:stretch}
+.avatar{width:180px;height:180px;border-radius:32px;background:linear-gradient(90deg,var(--g1),var(--g2));box-shadow:0 10px 0 var(--shadow);display:grid;place-items:center;font-size:4rem;color:#000;font-weight:800}
+a{color:inherit}
+.timeline{position:relative;border-left:4px solid var(--fg);padding-left:24px;padding-bottom:24px}
+.timeline::after{content:"";position:absolute;left:-14px;bottom:-16px;border-left:12px solid transparent;border-right:12px solid transparent;border-top:20px solid var(--fg)}
+.tl{position:relative;margin-bottom:30px}
+.tl::before{content:"";position:absolute;left:-34px;top:6px;width:16px;height:16px;border-radius:50%;background:var(--fg)}
+.date{font-weight:800}
+ul{padding-left:20px}
+.cols{columns:2;column-gap:32px}
+.meta{color:var(--muted)}
+.contact{margin-top:2px;padding-top:2px}
+.links{display:flex;flex-wrap:wrap;justify-content:center;gap:22px;margin-top:16px}
+.links a{text-decoration:none;font-weight:700}
+.links .card{padding:14px 22px}
+@media (max-width:760px){.cols{columns:1}body.open{padding-left:0}}
+</style>
+</head>
+<body>
+<button class="handle" aria-label="Open menu"><i>›</i><span>MENU</span><i>›</i></button>
+<nav>
+<div class="brand">Rudy Morello</div>
+<button data-tab="home" class="active">Welcome</button>
+<button data-tab="course">Engineering Course</button>
+<button data-tab="mobility">International Experiences</button>
+<button data-tab="sustain">Sustainability &amp; Civic Engagement</button>
+<button data-tab="projects">Projects</button>
+<button data-tab="other">Other Activities</button>
+<button data-tab="career">Career Development</button>
+</nav>
+<main>
+
+<section id="home" class="active">
+<div class="wrap">
+<div class="hero">
+<div class="txt">
+<h1>Hello,</h1>
+<p>I am <strong>Rudy Morello</strong>, a French engineering student at Toulouse INP-ENSEEIHT, Numerical Sciences department. I am interested in numerical development, that is why I am planning to make a career as a software engineer.</p>
+</div>
+<div class="avatar" aria-hidden="true"><img class="photo" src="photo_rudy.jpg" alt="photo de Rudy Morello" width="180" height="180"></div>
+</div>
+<div class="contact">
+<h2>Contact &amp; More</h2>
+<div class="links">
+<a class="card" href="https://www.linkedin.com/in/rudy-morello-8aa1a7387" target="_blank" rel="noopener">LinkedIn</a>
+<a class="card" href="#" target="_blank" rel="noopener">CV french</a>
+<a class="card" href="#" target="_blank" rel="noopener">CV english</a>
+</div>
+</div>
+</div>
+</section>
+
+<section id="course">
+<header class="banner">
+<h1 class="title">Engineering Course</h1>
+</header>
+<div class="wrap">
+<div class="timeline">
+<div class="tl">
+<div class="date">Sept 2023</div>
+<img src="mesr-inp-prepa_u-couleur.png" alt="Logo La Prépa des INP" width="300" height="100">
+<p>I started my studies in <strong>La Prépa des INP</strong>, a higher school preparatory class from the INP group, in Toulouse. This is a general scientific formation so I have studied:</p>
+<ul class="cols"><li>Maths</li><li>Computer Sciences (Python, SQL, …)</li><li>Physics</li><li>Chemistry</li><li>Biology</li><li>Languages: English, Spanish</li><li>Economical / Social Sciences</li><li>Sustainability</li></ul>
+<p>Then, one and a half year later, I specialized my domain to Maths and Computer Sciences.</p>
+<p>During the last semester of the formation, I was part of a project about “Space Exploration Sustainability” with a team of 6. With 80 hours of dedicated slots, we explored a lot of solutions for improving the sustainability of a lunar base, and made our own model of it.</p>
+</div>
+<div class="tl">
+<div class="date">May 2025</div>
+<p>At the end of the Prépa, I did an internship of 7 weeks in a computer science laboratory (IRIT) studying APO (Parallel Algorithm and Optimization). See the <em>Career Development</em> tab for more details.</p>
+</div>
+<div class="tl">
+<div class="date">Sept 2025</div>
+<img src="inp-enseeiht-couleur.png" alt="Logo ENSEEIHT" width="300" height="140">
+<p>I entered the engineering graduate school <strong>ENSEEIHT</strong> in Numerical Sciences. I'm currently studying:</p>
+<ul>
+<li>Applied Mathematics</li>
+<li>Program writing with different languages: Ada, C, MatLab, Java</li>
+<li>Computer Structure</li>
+<li>Program Proofs (Roc, WhyML)</li>
+<li>Professional Communication, English, Japanese</li>
+<li>Management</li>
+</ul>
+</div>
+<div class="tl">
+<div class="date">Sept 2026</div>
+<p>Starting my second year at <strong>ENSEEIHT</strong>, specializing in <strong>Software Systems</strong>.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section id="mobility">
+<header class="banner">
+<h1 class="title">International Experiences</h1>
+<p>During my engineering cursus, I have traveled and will travel to improve my communication skills, and learn from different cultures. Here are some of my international experiences.</p>
+</header>
+<div class="wrap">
+<div class="grid">
+<div class="card"><h3>Japan linguistic trip</h3>At the end of my firsy school year (summer 2026), I have made a linguistic trip of 7 weeks in Japan in partnership with a local assocation : the Intercultural Society Of Modern Arts. I have followed 3 weeks of Japanese lessons. Then I worked for 4 weeks in hotel business there to improve my Japanese skills. I have learned to live and work in a culture totally different from mine. It was a very enriching experience.<img class="card-photo" src="japon_fashion_school.jpg" alt="photo de Rudy Morello" width="400" height="300"></div>
+</div>
+</div>
+</section>
+
+<section id="sustain">
+<header class="banner">
+<h1 class="title">Sustainability &amp; Civic Engagement</h1>
+</header>
+<div class="wrap">
+<div class = "hero">
+<div class = "list">
+<ul>
+<li>I participated to a Clean Walk across Toulouse in September 2025.</li>
+<li>I had approximately 2 hours a week of sustainability class during 2 years (before engineering school). I studied a systemic approach applied to engineering sustainability problems.</li>
+<li>I took part in a few sustainability workshops during my studies: <a href="https://climatefresk.org/world/">Climate Fresk</a>, <a href="https://en.2tonnes.org/">2 Ton Activity</a>, <a href="https://www.1erdegre.earth/planetary-boundaries-fresco">Planetary Boundaries Fresco</a>.</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+
+<section id="projects">
+<header class="banner">
+<h1 class="title">Projects</h1>
+</header>
+<div class="wrap">
+  <h2>Professional or Study Projects</h2>
+  <div class="grid">
+  <div class="card"><h3>Router web simulation - 2025</h3> I have implemented a web routing algorithm and some of data structures used in web like the IP address, using <strong>Ada</strong>.</div>
+  <div class="card"><h3>Dijkstra's Algorithm - 2025</h3> As pairs, we implemented the pathfinding algorithm of Dijkstra in <strong>C</strong>, working on original data structures (trees) also made by ourselves.</div>
+  <div class="card"><h3>Real Time Strategy game - 2026</h3> By a team of 7, we developed a real-time strategy game in <strong>Java</strong>, using Object-oriented programming, the Java graphics library <strong>Java SWING</strong> and different procedural generation techniques for the map.</div>
+  <div class="card"><h3>Signal Decoder - 2026</h3> During our telecommunications coursework, I designed and implemented a simple signal decoder in <strong>Matlab</strong>.</div>
+</div>
+  <h2>Personal Projects</h2>
+  <div class="grid">
+  <div class="card"><h3>Arduino equalizer - 2026</h3> I built an Arduino-based equalizer on a led matrix taking directly the analogic sound information from the output of an old record player. I've found most of my inspiration from <a href = "https://projecthub.arduino.cc/shajeeb/32-band-audio-spectrum-visualizer-analyzer-924af5">this project</a>.<img class="card-photo" src="arduino_equalizer.jpg" alt="Arduino equalizer" width="145" height="145"></div>
+  <div class="card"><h3>My first godot project : Koï - 2026</h3> I have coded and designed the game Koï in about 3 weeks, using the Godot game engine. You can try it on <a href = "https://8roudee8.itch.io/koi">itch.io</a>.<img class="card-photo" src="koi_logo.png" alt="Koï game" width="145" height="145"></div>
+</div>
+</div>
+</section>
+
+<section id="other">
+<header class="banner">
+<h1 class="title">Other Activities</h1>
+<p>I would rather know how to do a lot of things correctly than know how to do one perfectly. That is why I've practiced a lot of different activities.</p>
+</header>
+<div class="wrap">
+<div class="grid">
+<div class="card"><h3>Basketball</h3>I used to play basketball in my local club during six years (2016–2022).<img class="card-photo" src="basket.png" alt="basketball" width="145" height="128"></div>
+<div class="card"><h3>Skateboard</h3>I have been practicing skateboard since 2019, it taught me coordination and perseverance.<img class="card-photo" src="skate.png" alt="skateboard" width="145" height="128"></div>
+<div class="card"><h3>Game development</h3>Interested in video game development since 2024. I started with Python and I am currently using the open-source game engine <strong>Godot</strong>.</div>
+<div class="card"><h3>Dexterity activities</h3>Since my childhood, I have been practicing various dexterity activities, such as arts of circus (in a club for 5 years 2011–2016), Kendama (japanese bilboquet), or Slackline. It taught me perseverance and the will to try a lot of various activities.</div>
+<div class="card"><h3>Piano</h3>I recently started playing piano (2024). I have learned music theory basics with books.<img class="card-photo" src="piano.jpg" alt="piano" width="145" height="128"></div>
+</div>
+</div>
+</section>
+
+<section id="career">
+<header class="banner">
+<h1 class="title">Career Development</h1>
+</header>
+<div class="wrap">
+<h2>Internships</h2>
+<div class="card">
+<h3>IRIT – Computer Science Research Institute of Toulouse</h3>
+<ul>
+<li><strong>When:</strong> from the end of April to mid-June 2025</li>
+<li><strong>Context:</strong> end of preparatory class internship</li>
+<li><strong>Subject:</strong> I worked on the optimization of sparse matrix solver algorithms. For this, I learned Fortran 90 basics and the Julia language. I was also taught the mathematical approach to optimizing solvers. All my work is published on git:
+<br><a href="https://github.com/8Rudy8/SymbolicFact.jl" target="_blank" rel="noopener">github.com/8Rudy8/SymbolicFact.jl</a></li>
+</ul>
+<img class="card-photo" src="Logo_IRIT.png" alt="photo de Rudy Morello" width="96" height="96">
+</div>
+</div>
+</section>
+
+</main>
+<script>
+var nav=document.querySelector('nav'),hd=document.querySelector('.handle'),touch=matchMedia('(hover:none)').matches;
+function setOpen(v){nav.classList.toggle('open',v);document.body.classList.toggle('open',v);hd.querySelectorAll('i').forEach(function(i){i.textContent=v?'‹':'›'})}
+hd.addEventListener('click',function(){if(touch)setOpen(!nav.classList.contains('open'))});
+document.addEventListener('mousemove',function(e){if(e.clientX<40)setOpen(true);else if(e.clientX>300)setOpen(false)});
+var btns=document.querySelectorAll('nav button'),secs=document.querySelectorAll('section');
+function show(id){
+  btns.forEach(function(b){b.classList.toggle('active',b.dataset.tab===id)});
+  secs.forEach(function(s){s.classList.toggle('active',s.id===id)});
+  window.scrollTo(0,0);
+  try{history.replaceState(null,'','#'+id)}catch(e){}
+}
+btns.forEach(function(b){b.addEventListener('click',function(){show(b.dataset.tab);if(touch)setOpen(false)})});
+var h=(location.hash||'').slice(1);
+if(h&&document.getElementById(h))show(h);
+</script>
+</body>
+</html>
